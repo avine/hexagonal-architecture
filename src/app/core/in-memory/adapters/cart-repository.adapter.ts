@@ -1,6 +1,9 @@
+// --- Hexagonal architecture: server side adapter ---
+
 import { delay, EMPTY, Observable, of } from 'rxjs';
 
-import { CartItem, ICartRepository } from '../../domain';
+import { CartItem, ICartRepository } from '@domain';
+
 import { mapToCartItem } from './cart-repository.mapper';
 import { mapToProductDtoId } from './catalog-repository.mapper';
 import { data } from './data';

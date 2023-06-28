@@ -1,8 +1,10 @@
+// --- Hexagonal architecture: server side port ---
+
 import { Observable } from 'rxjs';
 
 import { CartItem } from './cart.types';
 
-export interface ICartService {
+export interface ICartRepository {
   get(): Observable<CartItem[]>;
 
   addItem(productId: number): Observable<CartItem>;

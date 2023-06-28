@@ -21,7 +21,7 @@
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
     "paths": {
-      "@core/*": ["src/core/*"]
+      "@domain": ["src/domain/index.ts"]
     }
   },
   "angularCompilerOptions": {

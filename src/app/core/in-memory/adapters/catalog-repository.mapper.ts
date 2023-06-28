@@ -1,4 +1,4 @@
-import { Product } from '@core/domain';
+import { Product } from '@domain';
 
 import { ProductDto } from './data.types';
 

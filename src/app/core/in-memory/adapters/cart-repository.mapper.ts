@@ -1,4 +1,4 @@
-import { CartItem } from '@core/domain';
+import { CartItem } from '@domain';
 
 import { CartItemDto } from './data.types';
 

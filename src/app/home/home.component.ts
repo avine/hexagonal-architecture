@@ -2,9 +2,9 @@ import { zip } from 'rxjs';
 
 import { JsonPipe } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
+import { CartItem, Product } from '@domain';
 
-import { CartItem, Product } from '@core/domain';
-import { CartService, CatalogService } from '../shared/infrastructure';
+import { CartService, CatalogService } from '../core/services';
 
 @Component({
   selector: 'app-home',

@@ -1,3 +1,5 @@
+// --- Hexagonal architecture: use cases ---
+
 import { Observable } from 'rxjs';
 
 import { ICatalogRepository } from './catalog.repository';

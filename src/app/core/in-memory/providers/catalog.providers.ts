@@ -1,8 +1,10 @@
-import { ClassProvider, FactoryProvider } from '@angular/core';
+// --- Hexagonal architecture: client side infrastructure ---
 
-import { CatalogRepository, CatalogService } from '../';
-import { CatalogRepositoryAdapter } from '@core/adapters/in-memory';
-import { CatalogFeature, ICatalogRepository } from '@core/domain';
+import { ClassProvider, FactoryProvider } from '@angular/core';
+import { CatalogFeature, ICatalogRepository } from '@domain';
+
+import { CatalogRepository, CatalogService } from '../../services';
+import { CatalogRepositoryAdapter } from '../adapters';
 
 const catalogRepositoryProvider: ClassProvider = {
   provide: CatalogRepository,

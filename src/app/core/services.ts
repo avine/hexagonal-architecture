@@ -1,6 +1,6 @@
 import { InjectionToken } from '@angular/core';
 
-import { ICartRepository, ICartService, ICatalogRepository, ICatalogService } from '@core/domain';
+import { ICartRepository, ICartService, ICatalogRepository, ICatalogService } from '@domain';
 
 export const CatalogRepository = new InjectionToken<ICatalogRepository>('CatalogRepository');
 

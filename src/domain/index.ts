@@ -1,3 +1,5 @@
+// --- Hexagonal architecture: Domain entrypoint ---
+
 export * from './cart/cart.feature';
 export * from './cart/cart.repository';
 export * from './cart/cart.service';

@@ -1,3 +1,5 @@
+// --- Hexagonal architecture: use cases ---
+
 import { Observable, filter, mergeMap } from 'rxjs';
 
 import { ICatalogRepository } from '../catalog/catalog.repository';
