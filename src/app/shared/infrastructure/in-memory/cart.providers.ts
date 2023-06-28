@@ -1,12 +1,12 @@
 import { ClassProvider, FactoryProvider } from '@angular/core';
 
 import { CartRepository, CartService, CatalogRepository } from '../';
-import { CartRepositoryInMemoryAdapter } from '@core/adapters/in-memory';
+import { CartRepositoryAdapter } from '@core/adapters/in-memory';
 import { CartFeature, ICartRepository, ICatalogRepository } from '@core/domain';
 
 const cartRepositoryProvider: ClassProvider = {
   provide: CartRepository,
-  useClass: CartRepositoryInMemoryAdapter,
+  useClass: CartRepositoryAdapter,
 };
 
 const cartServiceProvider: FactoryProvider = {

@@ -1,20 +1,28 @@
 import { delay, EMPTY, Observable, of } from 'rxjs';
 
 import { CartItem, ICartRepository } from '../../domain';
-import { IN_MEMORY } from './data-in-memory';
+import { mapToCartItem } from './cart-repository.mapper';
+import { mapToProductDtoId } from './catalog-repository.mapper';
+import { data } from './data';
+import { CartItemDto } from './data.types';
 
-export class CartRepositoryInMemoryAdapter implements ICartRepository {
+export class CartRepositoryAdapter implements ICartRepository {
   get(): Observable<CartItem[]> {
-    return of(IN_MEMORY.CART).pipe(delay(1));
+    return of(data.cartItemsDto.map(mapToCartItem)).pipe(delay(1));
   }
 
   addItem(productId: number): Observable<CartItem> {
-    const product = IN_MEMORY.PRODUCTS.find(({ id }) => id === productId);
-    if (product) {
-      const { id: productId, title, price } = product;
-      IN_MEMORY.CART.push({ productId, title, price });
-      return of({ productId, title, price });
+    const productDtoId = mapToProductDtoId(productId);
+    const productDto = data.productsDto.find(({ id }) => id === productDtoId);
+
+    if (productDto) {
+      const { id, title: desc, price } = productDto;
+      const cartItemDto: CartItemDto = { id, desc, price };
+
+      data.cartItemsDto = [...data.cartItemsDto, cartItemDto];
+      return of(mapToCartItem(cartItemDto));
     }
+
     return EMPTY;
   }
 }

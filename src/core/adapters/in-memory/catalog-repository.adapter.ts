@@ -1,23 +1,25 @@
 import { delay, Observable, of } from 'rxjs';
 
 import { ICatalogRepository, Product } from '../../domain';
-import { IN_MEMORY } from './data-in-memory';
+import { mapToProduct, mapToProductDtoId } from './catalog-repository.mapper';
+import { data } from './data';
 
-export class CatalogRepositoryInMemoryAdapter implements ICatalogRepository {
+export class CatalogRepositoryAdapter implements ICatalogRepository {
   getAllProducts(): Observable<Product[]> {
-    return of(IN_MEMORY.PRODUCTS).pipe(delay(1));
+    return of(data.productsDto.map(mapToProduct)).pipe(delay(1));
   }
 
   decreaseStock(productId: number): Observable<boolean> {
     let success = false;
 
-    IN_MEMORY.PRODUCTS = IN_MEMORY.PRODUCTS.map((product) => {
-      if (product.id === productId && product.stock > 0) {
+    const productDtoId = mapToProductDtoId(productId);
+    data.productsDto = data.productsDto.map((productDto) => {
+      if (productDto.id === productDtoId && productDto.availableUnits > 0) {
         success = true;
-        return { ...product, stock: product.stock - 1 };
+        return { ...productDto, availableUnits: productDto.availableUnits - 1 };
       }
 
-      return product;
+      return productDto;
     });
 
     return of(success).pipe(delay(1));

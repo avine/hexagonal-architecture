@@ -1,12 +1,12 @@
 import { ClassProvider, FactoryProvider } from '@angular/core';
 
 import { CatalogRepository, CatalogService } from '../';
-import { CatalogRepositoryInMemoryAdapter } from '@core/adapters/in-memory';
+import { CatalogRepositoryAdapter } from '@core/adapters/in-memory';
 import { CatalogFeature, ICatalogRepository } from '@core/domain';
 
 const catalogRepositoryProvider: ClassProvider = {
   provide: CatalogRepository,
-  useClass: CatalogRepositoryInMemoryAdapter,
+  useClass: CatalogRepositoryAdapter,
 };
 
 const catalogServiceProvider: FactoryProvider = {
