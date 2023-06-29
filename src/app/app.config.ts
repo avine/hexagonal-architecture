@@ -7,10 +7,10 @@ import { routes } from './app.routes';
 /* --- Choose --- */
 
 // 1. "in-memory" adapter
-import { infrastructureProviders } from './core/adapters/in-memory';
+import { infrastructureProviders } from './core/infrastructure/in-memory';
 
 // 2. "http" adapter
-//import { infrastructureProviders } from './core/adapters/http';
+//import { infrastructureProviders } from './core/infrastructure/http';
 
 /* --- End of choose --- */
 

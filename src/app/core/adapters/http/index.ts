@@ -2,8 +2,7 @@
 
 import { ICartRepository, ICatalogRepository } from '@domain';
 
-import { AdapterSingletons } from '../../adapters.types';
-import { provideCartService, provideCatalogService } from '../../providers';
+import { AdapterSingletons } from '../adapters.types';
 import { CartRepositoryAdapter } from './cart-repository.adapter';
 import { CatalogRepositoryAdapter } from './catalog-repository.adapter';
 
@@ -11,7 +10,7 @@ let catalogRepository: ICatalogRepository;
 
 let cartRepository: ICartRepository;
 
-const adapterSingletons: AdapterSingletons = {
+export const adapterSingletons: AdapterSingletons = {
   get catalogRepository() {
     if (!catalogRepository) {
       catalogRepository = new CatalogRepositoryAdapter();
@@ -26,8 +25,3 @@ const adapterSingletons: AdapterSingletons = {
     return cartRepository;
   },
 };
-
-export const infrastructureProviders = [
-  provideCatalogService(adapterSingletons),
-  provideCartService(adapterSingletons),
-];

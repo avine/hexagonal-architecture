@@ -3,8 +3,8 @@
 import { FactoryProvider } from '@angular/core';
 import { CatalogFeature } from '@domain';
 
-import { AdapterSingletons } from '../adapters.types';
-import { CatalogService } from '../services';
+import { AdapterSingletons } from '../../adapters/adapters.types';
+import { CatalogService } from '../../services';
 
 export const provideCatalogService = (adapterSingletons: AdapterSingletons): FactoryProvider => ({
   provide: CatalogService,
