@@ -3,10 +3,10 @@
 import { FactoryProvider } from '@angular/core';
 import { CatalogFeature } from '@domain';
 
-import { CatalogService } from '../../services';
-import { adapterSingletons } from '../adapters';
+import { AdapterSingletons } from '../adapters.types';
+import { CatalogService } from '../services';
 
-export const catalogServiceProvider: FactoryProvider = {
+export const provideCatalogService = (adapterSingletons: AdapterSingletons): FactoryProvider => ({
   provide: CatalogService,
   useFactory: () => new CatalogFeature(adapterSingletons.catalogRepository),
-};
+});

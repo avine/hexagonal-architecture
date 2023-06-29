@@ -1,3 +1,5 @@
+// --- Hexagonal architecture: client side infrastructure ---
+
 import { InjectionToken } from '@angular/core';
 
 import { ICartService, ICatalogService } from '@domain';
