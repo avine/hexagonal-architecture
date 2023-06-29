@@ -1,6 +1,6 @@
 // --- Hexagonal architecture: use cases ---
 
-import { Observable, filter, mergeMap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { ICatalogRepository } from '../catalog/catalog.repository';
 import { ICartRepository } from './cart.repository';
@@ -15,9 +15,6 @@ export class CartFeature implements ICartService {
   }
 
   addItem(productId: number): Observable<CartItem> {
-    return this.catalogRepository.decreaseStock(productId).pipe(
-      filter((success) => success),
-      mergeMap(() => this.cartRepository.addItem(productId))
-    );
+    return this.cartRepository.addItem(productId);
   }
 }

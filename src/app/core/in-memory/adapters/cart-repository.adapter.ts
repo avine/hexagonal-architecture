@@ -18,7 +18,9 @@ export class CartRepositoryAdapter implements ICartRepository {
     const productDtoId = mapToProductDtoId(productId);
     const productDto = data.productsDto.find(({ id }) => id === productDtoId);
 
-    if (productDto) {
+    if (productDto && productDto.availableUnits > 0) {
+      productDto.availableUnits -= 1;
+
       const { id, title: desc, price } = productDto;
       const cartItemDto: CartItemDto = { id, desc, price };
 

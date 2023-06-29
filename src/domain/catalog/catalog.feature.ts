@@ -12,8 +12,4 @@ export class CatalogFeature implements ICatalogService {
   getAllProducts(): Observable<Product[]> {
     return this.catalogRepository.getAllProducts();
   }
-
-  decreaseStock(productId: number): Observable<boolean> {
-    return this.catalogRepository.decreaseStock(productId);
-  }
 }

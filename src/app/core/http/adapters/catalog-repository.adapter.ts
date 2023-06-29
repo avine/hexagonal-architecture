@@ -17,13 +17,4 @@ export class CatalogRepositoryAdapter implements ICatalogRepository {
       .get<ProductDto[]>('http://localhost:8080/api/products')
       .pipe(map((productsDto) => productsDto.map(mapToProduct)));
   }
-
-  // Hack: in this implementation, we just need to make sure that the stock is not empty for this product.
-  // But we don't actually decrease the stock.
-  // This will be done automatically on the server side when calling `CartRepositoryAdapter.addItem`.
-  decreaseStock(productId: number): Observable<boolean> {
-    return this.#httpClient
-      .get<ProductDto>(`http://localhost:8080/api/products/${productId}`)
-      .pipe(map(({ availableUnits }) => availableUnits > 0));
-  }
 }
