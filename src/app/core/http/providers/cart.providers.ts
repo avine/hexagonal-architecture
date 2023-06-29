@@ -1,21 +1,12 @@
 // --- Hexagonal architecture: client side infrastructure ---
 
-import { ClassProvider, FactoryProvider } from '@angular/core';
-import { CartFeature, ICartRepository, ICatalogRepository } from '@domain';
+import { FactoryProvider } from '@angular/core';
+import { CartFeature } from '@domain';
 
-import { CartRepository, CartService, CatalogRepository } from '../../services';
-import { CartRepositoryAdapter } from '../adapters';
+import { CartService } from '../../services';
+import { adapterSingletons } from '../adapters';
 
-const cartRepositoryProvider: ClassProvider = {
-  provide: CartRepository,
-  useClass: CartRepositoryAdapter,
-};
-
-const cartServiceProvider: FactoryProvider = {
+export const cartServiceProvider: FactoryProvider = {
   provide: CartService,
-  useFactory: (cartRepository: ICartRepository, catalogRepository: ICatalogRepository) =>
-    new CartFeature(cartRepository, catalogRepository),
-  deps: [CartRepository, CatalogRepository],
+  useFactory: () => new CartFeature(adapterSingletons.cartRepository),
 };
-
-export const CART_PROVIDERS = [cartRepositoryProvider, cartServiceProvider] as const;

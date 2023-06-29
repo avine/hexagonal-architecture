@@ -1,4 +1,26 @@
 // --- Hexagonal architecture: server side adapters ---
 
-export * from './cart-repository.adapter';
-export * from './catalog-repository.adapter';
+import { ICartRepository, ICatalogRepository } from '@domain';
+
+import { CartRepositoryAdapter } from './cart-repository.adapter';
+import { CatalogRepositoryAdapter } from './catalog-repository.adapter';
+
+let catalogRepository: ICatalogRepository;
+
+let cartRepository: ICartRepository;
+
+export const adapterSingletons = {
+  get catalogRepository() {
+    if (!catalogRepository) {
+      catalogRepository = new CatalogRepositoryAdapter();
+    }
+    return catalogRepository;
+  },
+
+  get cartRepository() {
+    if (!cartRepository) {
+      cartRepository = new CartRepositoryAdapter();
+    }
+    return cartRepository;
+  },
+};

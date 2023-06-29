@@ -1,4 +1,6 @@
 // --- Hexagonal architecture: client side infrastructure ---
 
-export * from './cart.providers';
-export * from './catalog.providers';
+import { cartServiceProvider } from './cart.providers';
+import { catalogServiceProvider } from './catalog.providers';
+
+export const infrastructureProviders = [cartServiceProvider, catalogServiceProvider];

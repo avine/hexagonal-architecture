@@ -1,4 +1,4 @@
-import { CartItemDto, ProductDto } from "./data.types";
+import { CartItemDto, ProductDto } from './data.types';
 
 const productsDto: ProductDto[] = [
   { id: '1', title: 'Product 1', price: 10, availableUnits: 3 },
